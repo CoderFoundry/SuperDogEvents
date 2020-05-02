@@ -16,8 +16,9 @@ Also Show these stats for All Events
 
 Extra Credit: Add the ability to add additional events. Store the events in local storage.
 
-Given the following array of objects.
-events = [{
+Given the following array of objects:
+
+ [{
     event: "ComicCon",
     city: "New York",
     state: "New York",
