@@ -1,8 +1,9 @@
-# SuperDogEvents
+
+![Image description](https://github.com/CoderFoundry/SuperDogEvents/blob/master/images/SuperDogEventsWebLogosmall.png)
+
 Super Dog Events A Coding Challenge
 
-Given an array of objects of event data
-Display the following:
+Given an array of objects of event data display the following:
 
 Total attendance by City
 
