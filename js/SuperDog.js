@@ -141,7 +141,7 @@ function displayData() {
   //clear table first
   eventBody.innerHTML = "";
   //grab the events from local storage
-  let curEvents = JSON.parse(localStorage.getItem("eventsArray"));
+  let curEvents = JSON.parse(localStorage.getItem("eventsArray")) || [];
 
   if (curEvents.length == 0) {
     curEvents = events;
