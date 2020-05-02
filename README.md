@@ -2,10 +2,10 @@
 Super Dog Events A Coding Challenge
 
 Given an array of objects of event data
-Dipslay the total, average and least and most attended events.
+Display the total, average and least and most attended events.
 
 Given the following array of objects.
-var events = [{
+events = [{
     event: "ComicCon",
     city: "New York",
     state: "New York",
