@@ -3,14 +3,18 @@ Super Dog Events A Coding Challenge
 
 Given an array of objects of event data
 Display the following:
+
 Total attendance by City
+
 Average Attendance by City
+
 Least attended event by City 
-Most attended event by City.
+
+Most attended event by City
 
 Also Show these stats for All Events
 
-Extra Credit ADD a Create option to add additional events. Store the events in local storage.
+Extra Credit: Add the ability to add additional events. Store the events in local storage.
 
 Given the following array of objects.
 events = [{
