@@ -70,7 +70,12 @@ var filteredEvents = events;
 function buildDropDown() {
   var eventDD = document.getElementById("eventDropDown");
   //discuss this statement
-  let distinctEvents = [...new Set(events.map((event) => event.city))];
+  curEvents = JSON.parse(localStorage.getItem("eventsArray"))
+  if (curEvents.length == 0) {
+    curEvents = events;
+  }
+
+  let distinctEvents = [...new Set(curEvents.map((event) => event.city))];
 
   let linkHTMLEnd =
     '<div class="dropdown-divider"></div><a class="dropdown-item" onclick="getEvents(this)" data-string="All" >All</a>';
@@ -147,14 +152,17 @@ function displayData() {
     curEvents = events;
     localStorage.setItem("eventsArray", JSON.stringify(curEvents));
   }
+
   for (var i = 0; i < curEvents.length; i++) {
     const eventRow = document.importNode(template.content, true);
+    //grab only the columns in the template
+    eventCols = eventRow.querySelectorAll("td");
 
-    eventRow.getElementById("event").textContent = curEvents[i].event;
-    eventRow.getElementById("city").textContent = curEvents[i].city;
-    eventRow.getElementById("state").textContent = curEvents[i].state;
-    eventRow.getElementById("attendance").textContent = curEvents[i].attendance;
-    eventRow.getElementById("eventDate").textContent = new Date(
+    eventCols[0].textContent = curEvents[i].event;
+    eventCols[1].textContent = curEvents[i].city;
+    eventCols[2].textContent = curEvents[i].state;
+    eventCols[3].textContent = curEvents[i].attendance;
+    eventCols[4].textContent = new Date(
       curEvents[i].date
     ).toLocaleDateString();
 
@@ -166,7 +174,7 @@ function saveEventData() {
   //grab the events out of local storage
   let curEvents = JSON.parse(localStorage.getItem("eventsArray")) || events;
 
-  document.getElementById("newEventName");
+  //document.getElementById("newEventName");
   let obj = {};
   obj["event"] = document.getElementById("newEventName").value;
   obj["city"] = document.getElementById("newEventCity").value;
@@ -175,14 +183,17 @@ function saveEventData() {
     document.getElementById("newEventAttendance").value,
     10
   );
-  obj["date"] = new Date(
-    document.getElementById("newEventDate").value
-  ).toLocaleDateString();
+
+  let eventDate = document.getElementById("newEventDate").value;
+  let eventDate2 = `${eventDate} 00:00`
+
+  obj["date"] = new Date(eventDate2).toLocaleDateString();
 
   curEvents.push(obj);
 
   localStorage.setItem("eventsArray", JSON.stringify(curEvents));
-
+  //clear the form
   //Access the values from the form by ID and add an object to the array.
+  buildDropDown();
   displayData();
 }
