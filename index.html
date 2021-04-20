@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism-twilight.min.css"
+          integrity="sha512-akb4nfKzpmhujLUyollw5waBPeohuVf0Z5+cL+4Ngc4Db+V8szzx6ZTujguFjpmD076W8LImVIbOblmQ+vZMKA==" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -17,7 +19,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">SuperDog Events</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -29,8 +31,13 @@
                     <a class="nav-link" href="/app.html">The App</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/CoderFoundry/SuperDogEvents" target="_blank">Get The
-                        Code</a>
+                    <a class="nav-link" href="/code.html">See The Code</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/CoderFoundry/SuperDogEvents" target="_blank">
+                        Get The
+                        Code
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://coderfoundry.com" target="_blank">About Coder Foundry</a>
@@ -41,7 +48,7 @@
     <div class="container-fluid">
         <div class="dogContainer">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-7">
                     <p>
                         <h1>Super Dog Events: A Coding Challenge</h1>
                         SuperDog Events is an event company the produces comic cons. The marketing team has requested a
@@ -60,13 +67,15 @@
 
                             <li>Show these stats for All Events</li>
 
-                            <li>Extra Credit: Add the ability to add additional events. Store the events in local
-                                storage or a database.</li>
+                            <li>
+                                Extra Credit: Add the ability to add additional events. Store the events in local
+                                storage or a database.
+                            </li>
                         </ul>
                     </p>
                     <p><b>Below is the array of data you are given:</b></p>
                     <pre>
-                        <code>
+                    <code class="language-js">
 [{event: "ComicCon",city: "New York",state: "New York",attendance: 240000,date: "06/01/2017"},
 {event: "ComicCon",city: "New York",state: "New York",attendance: 250000,date: "06/01/2018"},
 {event: "ComicCon",city: "New York",state: "New York",attendance: 257000,date: "06/01/2019"},
@@ -85,8 +94,9 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <h4>You can learn to code at Coder Foundry. To learn more visit <a href="https://coderfoundry.com"
-                            target="-blank"> Coder Foundry</a>
+                    <h4>
+                        You can learn to code at Coder Foundry. To learn more visit <a href="https://coderfoundry.com"
+                                                                                       target="-blank"> Coder Foundry</a>
                     </h4>
                     <p>
                         Are you a new programmer looking to switch careers, a Computer Science grad working to build a
@@ -97,7 +107,8 @@
                         designed
                         to teach you cutting edge, high-demand technologies, so you can launch your new career and adapt
                         to an
-                        ever-changing, rapidly evolving market.</p>
+                        ever-changing, rapidly evolving market.
+                    </p>
                 </div>
             </div>
         </div>
@@ -105,13 +116,16 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/prism.min.js"
+            integrity="sha512-WkVkkoB31AoI9DAk6SEEEyacH9etQXKUov4JRRuM1Y681VsTq7jYgrRw06cbP6Io7kPsKx+tLFpH/HXZSZ2YEQ==" crossorigin="anonymous">
     </script>
 </body>
 

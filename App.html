@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 
@@ -191,4 +192,210 @@
 
 </body>
 
+=======
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <title>SuperDog Events - A Coding Challenge</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#FFA000">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body onload="buildDropDown()">
+
+    <!--Insert Menu-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">SuperDog Events</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/app.html"><span class="sr-only">(current)</span>The App</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/code.html">See The Code</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/CoderFoundry/SuperDogEvents" target="_blank">Get The Code</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://coderfoundry.com" target="_blank">About Coder Foundry</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--Insert your main content here-->
+    <div class="container-fluid">
+        <div class="dogContainer">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary">Pick a Location</button>
+                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div id="eventDropDown" class="dropdown-menu">
+                            <!--Template for dropdown-->
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <tr>
+                            <th colspan="2" id="statsHeader">Stats For All Events</th>
+                        </tr>
+                        <tr>
+                            <td>Total Attendance</td>
+                            <td id="total">100</td>
+                        </tr>
+                        <tr>
+                            <td>Average Attendance</td>
+                            <td id="average">100</td>
+                        </tr>
+                        <tr>
+                            <td>Most Attended</td>
+                            <td id="most">100</td>
+                        </tr>
+                        <tr>
+                            <td>Least Attended</td>
+                            <td id="least">100</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-6 order-first order-md-2">
+                    <img src="/images/SuperDogEventsWebLogosmall.png" class="img-fluid p-2 ">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>
+                        You can learn to code at Coder Foundry. To learn more visit <a href="https://coderfoundry.com"
+                                                                                       target="_blank">
+                            Coder
+                            Foundry
+                        </a>
+                    </h4>
+                    <p>
+                        Are you a new programmer looking to switch careers, a Computer Science grad working to build a portfolio, or
+                        a
+                        professional programmer in need of a skills upgrade? Our Full-Stack Immersive Programming Courses are
+                        designed
+                        to teach you cutting edge, high-demand technologies, so you can launch your new career and adapt to an
+                        ever-changing, rapidly evolving market.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
+                            Add Data
+                        </button>
+                        <table class="table table-striped" id="eventData">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Event Name</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Attendance</th>
+                                    <th>Event Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eventBody">
+                                <!--Data goes here-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add A New Event</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <form id="newEventForm">
+                                        <div class="form-group">
+                                            <label for="newEventName">Event Name</label>
+                                            <input type="text" class="form-control" id="newEventName" placeholder="Event">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newEventCity">City</label>
+                                            <input type="text" class="form-control" id="newEventCity" placeholder="City">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newEventState">State</label>
+                                            <input type="text" class="form-control" id="newEventState" placeholder="State">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newEventAttendance">Attendance</label>
+                                            <input type="number" class="form-control" id="newEventAttendance" placeholder="Attendance">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newEventDate">Event Date</label>
+                                            <input type="date" class="form-control" id="newEventDate" placeholder="Date">
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" onclick="saveEventData()" class="btn btn-secondary"
+                                            data-dismiss="modal">
+                                        Save
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <template id="eventData-template">
+        <tr>
+            <td id="event"></td>
+            <td id="city"></td>
+            <td id="state"></td>
+            <td id="attendance"></td>
+            <td id="eventDate"></td>
+        </tr>
+    </template>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="/js/SuperDog.JS"></script>
+
+</body>
+
+>>>>>>> df672855f7e14e22c5f913cf08d9fddc23853b32
 </html>
