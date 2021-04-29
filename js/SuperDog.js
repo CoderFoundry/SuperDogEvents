@@ -70,8 +70,8 @@ var filteredEvents = events;
 function buildDropDown() {
 
   //grab the select list we want to add city names to.
-  var eventDD = document.getElementById("eventDropDown");
-
+  let eventDD = document.getElementById("eventDropDown");
+  eventDD.innerHTML = "";
   //grab a template we want to use to populate the select list
   const template = document.getElementById("cityDD-template");
 
@@ -126,7 +126,7 @@ function displayStats() {
   let currentAttendance = 0;
 
   //display total attendance
-  for (var i = 0; i < filteredEvents.length; i++) {
+  for (let i = 0; i < filteredEvents.length; i++) {
     currentAttendance = filteredEvents[i].attendance;
     total += currentAttendance;
 
@@ -164,7 +164,7 @@ function displayData() {
     localStorage.setItem("eventsArray", JSON.stringify(curEvents));
   }
 
-  for (var i = 0; i < curEvents.length; i++) {
+  for (let i = 0; i < curEvents.length; i++) {
     const eventRow = document.importNode(template.content, true);
     //grab only the columns in the template
     eventCols = eventRow.querySelectorAll("td");
@@ -189,7 +189,10 @@ function saveEventData() {
   let obj = {};
   obj["event"] = document.getElementById("newEventName").value;
   obj["city"] = document.getElementById("newEventCity").value;
-  obj["state"] = document.getElementById("newEventState").value;
+
+  let stateSel = document.getElementById("newEventState");
+  obj["state"] = stateSel.options[stateSel.selectedIndex].text
+
   obj["attendance"] = parseInt(
     document.getElementById("newEventAttendance").value,
     10
