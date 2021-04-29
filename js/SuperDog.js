@@ -68,24 +68,39 @@ var filteredEvents = events;
 
 //build a dropdown of specific cities
 function buildDropDown() {
+
+  //grab the select list we want to add city names to.
   var eventDD = document.getElementById("eventDropDown");
-  //discuss this statement
-  curEvents = JSON.parse(localStorage.getItem("eventsArray"))
-  if (curEvents.length == 0) {
+
+  //grab a template we want to use to populate the select list
+  const template = document.getElementById("cityDD-template");
+
+
+
+  //Pull the events from local storage if there are none pull form the
+  //default data.
+  curEvents = JSON.parse(localStorage.getItem("eventsArray"));
+  if (curEvents == null) {
     curEvents = events;
   }
 
   let distinctEvents = [...new Set(curEvents.map((event) => event.city))];
 
-  let linkHTMLEnd =
-    '<div class="dropdown-divider"></div><a class="dropdown-item" onclick="getEvents(this)" data-string="All" >All</a>';
-  let resultHTML = "";
+
+
+  let ddItemNode = document.importNode(template.content, true);
+  ddItem = ddItemNode.querySelector("a");
+  ddItem.setAttribute("data-string", "All");
+  ddItem.textContent = "All";
+  eventDD.appendChild(ddItem);
 
   for (var i = 0; i < distinctEvents.length; i++) {
-    resultHTML += `<a class="dropdown-item" onclick="getEvents(this)" data-string="${distinctEvents[i]}">${distinctEvents[i]}</a>`;
+    ddItemNode = document.importNode(template.content, true);
+    ddItem = ddItemNode.querySelector("a");
+    ddItem.setAttribute("data-string", distinctEvents[i]);
+    ddItem.textContent = distinctEvents[i];
+    eventDD.appendChild(ddItem);
   }
-  resultHTML += linkHTMLEnd;
-  eventDD.innerHTML = resultHTML;
   displayStats();
   displayData();
 }
@@ -95,6 +110,7 @@ function getEvents(element) {
   let city = element.getAttribute("data-string");
   curEvents = JSON.parse(localStorage.getItem("eventsArray")) || events;
   filteredEvents = curEvents;
+
   document.getElementById("statsHeader").innerHTML = `Stats For ${city} Events`;
   if (city != "All") {
     //Explain how array filtering works-
