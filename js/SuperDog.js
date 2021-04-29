@@ -75,8 +75,6 @@ function buildDropDown() {
   //grab a template we want to use to populate the select list
   const template = document.getElementById("cityDD-template");
 
-
-
   //Pull the events from local storage if there are none pull form the
   //default data.
   curEvents = JSON.parse(localStorage.getItem("eventsArray"));
@@ -85,9 +83,6 @@ function buildDropDown() {
   }
 
   let distinctEvents = [...new Set(curEvents.map((event) => event.city))];
-
-
-
   let ddItemNode = document.importNode(template.content, true);
   ddItem = ddItemNode.querySelector("a");
   ddItem.setAttribute("data-string", "All");

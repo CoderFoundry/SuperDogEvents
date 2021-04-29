@@ -10,9 +10,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism-okaidia.min.css"
-          integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" />
+        integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ=="
+        crossorigin="anonymous" />
 </head>
 
 <body>
@@ -20,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">SuperDog Events</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -61,35 +62,49 @@
                         <div class="card-header" id="headingOne">
                             <div class=" col-12 col-lg-4 offset-lg-4 text-center">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         Build Dropdown Function
                                     </button>
                                 </h2>
                             </div>
                         </div>
 
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#scriptMarkUp">
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#scriptMarkUp">
                             <div class="card-body">
                                 <pre>
                                 <code class="language-javascript">
-//the default display is all events
-var filteredEvents = events;
-
 //build a dropdown of specific cities
 function buildDropDown() {
+
+    //grab the select list we want to add city names to.
     var eventDD = document.getElementById("eventDropDown");
-//discuss this statement
-    let distinctEvents = [...new Set(events.map((event) => event.city))];
 
-    let linkHTMLEnd =</code><code class="language-html"><script type="text/html">
-    '<div class="dropdown-divider"></div><a class="dropdown-item" onclick="getEvents(this)" data-string="All">All</a>';</script></code><code class="language-javascript">
-    let resultHTML = "";
+    //grab a template we want to use to populate the select list
+    const template = document.getElementById("cityDD-template");
 
-    for (var i = 0; i < distinctEvents.length; i++) {</code><code class="language-html"><script type="text/html">
-        resultHTML +=`<a class="dropdown-item" onclick="getEvents(this)" data-string="${distinctEvents[i]}">${distinctEvents[i]}</a>`;</script></code><code class="language-javascript">
+    //Pull the events from local storage if there are none pull form the
+    //default data.
+    curEvents = JSON.parse(localStorage.getItem("eventsArray"));
+    if (curEvents == null) {
+    curEvents = events;
     }
-    resultHTML += linkHTMLEnd;
-    eventDD.innerHTML = resultHTML;
+
+    let distinctEvents = [...new Set(curEvents.map((event) => event.city))];
+    let ddItemNode = document.importNode(template.content, true);
+    ddItem = ddItemNode.querySelector("a");
+    ddItem.setAttribute("data-string", "All");
+    ddItem.textContent = "All";
+    eventDD.appendChild(ddItem);
+
+    for (var i = 0; i < distinctEvents.length; i++) {
+    ddItemNode = document.importNode(template.content, true);
+    ddItem = ddItemNode.querySelector("a");
+    ddItem.setAttribute("data-string", distinctEvents[i]);
+    ddItem.textContent = distinctEvents[i];
+    eventDD.appendChild(ddItem);
+    }
     displayStats();
     displayData();
 }
@@ -102,7 +117,9 @@ function buildDropDown() {
                             <div class=" col-12 col-lg-4 offset-lg-4 text-center">
 
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <button class="btn btn-link btn-block collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
                                         Get Events Function
                                     </button>
                                 </h2>
@@ -135,13 +152,16 @@ function getEvents(element) {
                         <div class="card-header" id="headingThree">
                             <div class=" col-12 col-lg-4 offset-lg-4 text-center">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <button class="btn btn-link btn-block collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
                                         Display Stats Function
                                     </button>
                                 </h2>
                             </div>
                         </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#scriptMarkUp">
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#scriptMarkUp">
                             <div class="card-body">
                                 <pre><code class="language-js">function displayStats() {
     let total = 0;
@@ -183,13 +203,16 @@ function getEvents(element) {
                         <div class="card-header" id="headingFour">
                             <div class=" col-12 col-lg-4 offset-lg-4 text-center">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <button class="btn btn-link btn-block collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
                                         Display Data Function
                                     </button>
                                 </h2>
                             </div>
                         </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#scriptMarkUp">
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                            data-parent="#scriptMarkUp">
                             <div class="card-body">
                                 <pre><code class="language-js">function displayData() {
     const template = document.getElementById("eventData-template");
@@ -226,13 +249,16 @@ function getEvents(element) {
                         <div class="card-header" id="headingFive">
                             <div class=" col-12 col-lg-4 offset-lg-4 text-center">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link btn-cf btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    <button class="btn btn-link btn-cf btn-block collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
                                         Save Event Data Function
                                     </button>
                                 </h2>
                             </div>
                         </div>
-                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#scriptMarkUp">
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                            data-parent="#scriptMarkUp">
                             <div class="card-body">
                                 <pre><code class="language-js">function saveEventData() {
 //grab the events out of local storage
@@ -272,7 +298,7 @@ function getEvents(element) {
             <div class="col">
                 <h4>
                     You can learn to code at Coder Foundry. To learn more visit <a href="https://coderfoundry.com"
-                                                                                   target="-blank"> Coder Foundry</a>
+                        target="-blank"> Coder Foundry</a>
                 </h4>
                 <p>
                     Are you a new programmer looking to switch careers, a Computer Science grad working to build a
@@ -291,19 +317,21 @@ function getEvents(element) {
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/prism.min.js"
-            integrity="sha512-WkVkkoB31AoI9DAk6SEEEyacH9etQXKUov4JRRuM1Y681VsTq7jYgrRw06cbP6Io7kPsKx+tLFpH/HXZSZ2YEQ==" crossorigin="anonymous">
+        integrity="sha512-WkVkkoB31AoI9DAk6SEEEyacH9etQXKUov4JRRuM1Y681VsTq7jYgrRw06cbP6Io7kPsKx+tLFpH/HXZSZ2YEQ=="
+        crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/line-numbers/prism-line-numbers.min.js"
-            integrity="sha512-1oLZvExT5RaW4q2GgvRPf+XzVVGmsKirfZBRN7aifdOpvZ1L9idEncfMFlfHiQNGBA+Sev+alscSAT/xQ0rwXA==" crossorigin="anonymous">
+        integrity="sha512-1oLZvExT5RaW4q2GgvRPf+XzVVGmsKirfZBRN7aifdOpvZ1L9idEncfMFlfHiQNGBA+Sev+alscSAT/xQ0rwXA=="
+        crossorigin="anonymous">
     </script>
 
 </body>
